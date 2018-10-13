@@ -14,7 +14,7 @@ print ('\nSo, please tell me what number I am thinking about right now beetwen 1
 for guessesTaken in range(6):
     guess = input('Take a guess: ')
     guess = int(guess)
-    
+
     if guess < number:
         print ('Your guess is too low.')
 
@@ -35,4 +35,4 @@ if guess != number:
     print ('\nDon\'t worry. Try again!')
 
 input('\nThanks for playing! Press ENTER to exit and play again!.')
-
+ngn
