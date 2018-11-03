@@ -6,7 +6,7 @@ guessesTaken = 0
 
 print ('Hi there! In a sec you will play with me in a "Guess the number" game. I will choose some number beetwen 1 and 20 and you will have 6 chances to guess my number.\nPlease tell me your name.')
 name = input()
-print ('\nNice to meet you ' +name+ '!')
+print ('\nNice to meet you', name + '!')
 
 number = random.randint(1,20)
 print ('\nSo, please tell me what number I am thinking about right now beetwen 1 and 20?')
