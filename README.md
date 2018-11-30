@@ -17,4 +17,5 @@ Project is finished.
 This project was inspired by "Invent your own computer games with Python" by Al Sweigart.
 
 ## Contact
-Created by Jakub Folta [@betterlifewisdomcom](https://www.betterlifewisdom.com/) - feel free to contact me!
+Created by Jakub Folta [@betterlifewisdom](https://www.betterlifewisdom.com/) - feel free to contact me!
+[Facebook](https://www.facebook.com/jakub.folta.58)
