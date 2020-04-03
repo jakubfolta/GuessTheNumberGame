@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  background: hsl(207, 92%, 45%);
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.title {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/*************************************************************
+******************* Glowing Checbox Button *******************
+*************************************************************/
+
+.glowing {
+  position: relative;
+  width: 180px;
+  height: 60px;
+  -webkit-appearance: none;
+  background: linear-gradient(0deg, hsl(0, 0%, 20%), hsl(0, 0%, 40%));
+  cursor: pointer;
+  outline: none;
+  border-radius: 30px;
+  box-shadow: 0 0 0 4px hsl(0, 0%, 30%), 0 0 0 5px hsl(0, 0%, 15%);
+}
+
+.glowing:checked {
+  background: linear-gradient(0deg, hsl(122, 100%, 43%), hsl(122, 100%, 53%));
+  box-shadow: 0 0 2px hsl(122, 100%, 43%), 0 0 5px hsl(122, 100%, 63%), 0 0 0 4px hsl(0, 0%, 30%), 0 0 0 5px hsl(0, 0%, 20%), inset 0 0 10px hsl(122, 100%, 43%);
+}
+
+.glowing::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 60px;
+  border-radius: 30px;
+  background: linear-gradient(0deg, hsl(0, 0%, 17%), hsl(0, 0%, 27%));
+  box-shadow: 0 0 0 1px hsl(0, 0%, 15%);
+  transform: scale(.98, .97);
+  transition: .4s;
+}
+
+.glowing:checked::before {
+  left: 90px;
+}
+
+.glowing::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 75px;
+  width: 6px;
+  height: 4px;
+  background: linear-gradient(0deg, hsl(0, 0%, 17%), hsl(0, 0%, 27%));
+  border-radius: 30px;
+  box-shadow: 0 0 0 .5px hsl(0, 0%, 15%);
+  transition: .4s;
+}
+
+.glowing:checked::after {
+  left: 165px;
+  background: hsl(122, 100%, 53%);
+  box-shadow: 0 0 25px hsl(122, 100%, 73%):
+}
+
+/*************************************************************
+******************* Custom Checkbox List *******************
+*************************************************************/
+
+ul {
+  background: hsl(243, 20%, 29%);
+  padding: 5px 20px;
+  border: 1px solid hsl(0, 0%, 10%);
+  border-radius: 5px;
+  width: 250px;
+}
+
+ul li {
+  position: relative;
+  padding: 10px 0;
+  list-style: none;
+  cursor: pointer;
+  border-bottom: 1px solid hsl(0, 0%, 10%);
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li label {
+  cursor: pointer;
+  text-transform: capitalize;
+  color: hsl(0, 100%, 100%);
+  font-size: 18px;
+  padding-left: 25px;
+}
+
+ul li label input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+ul li label .check {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background: hsl(0, 0%, 0%);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+ul li label .check::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border-radius: 2px;
+  background: hsl(0, 0%, 10%);
+  transform: translateX(180px);
+  transition: .3s;
+}
+
+ul li label input:checked ~ .check::before {
+  background: hsl(109, 85%, 54%);
+  box-shadow: 0 0 15px hsl(109, 85%, 54%);
+  transform: translateX(0);
+}
+
+/*************************************************************
+***************** Flipping Card Hover Effect *****************
+*************************************************************/
+
+.card {
+  transform-style: preserve-3d;
+  perspective: 600px;
+  transition: .5s;
+  width: 300px;
+  height: 300px;
+}
+
+.card .front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsl(0, 0%, 0%);
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  transition: .5s;
+}
+
+.card:hover .front {
+  transform: rotateX(-180deg);
+}
+
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsl(0, 0%, 0%);
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  transition: .5s;
+}
+
+.card .back::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.card:hover .back {
+  transform: rotateX(0deg);
+}
+
+.card .back .details {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card .back .details h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  color: hsl(0, 0%, 100%);
+}
+
+.card .back .details span {
+  font-size: 16px;
+  color: hsl(0, 0%, 76%)
+}
+
+.social-icons {
+  padding: 10px 0;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  background: hsl(234, 6%, 68%);
+  color: hsl(0, 0%, 100%);
+  text-decoration: none;
+  border-radius: 50%;
+  transition: .5s;
+}
+
+.social-icons a .fa {
+  line-height: 36px;
+}
+
+.social-icons a:hover {
+  background: hsl(133, 100%, 50%);
+}
+
+/*************************************************************
+******************* Glowing Loader Ring *********************
+*************************************************************/
+
+.ring {
+  position: relative;
+  background: transparent;
+  width: 150px;
+  height: 150px;
+  border: 3px solid hsl(0, 0%, 21%);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 150px;
+  font-size: 20px;
+  color: hsl(111, 92%, 46%);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px hsl(111, 92%, 46%);
+  box-shadow: 0 0 20px hsla(0, 0%, 0%, 0.5);
+}
+
+.ring:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid hsl(111, 92%, 46%);
+  border-right: 3px solid hsl(111, 92%, 46%);
+  border-radius: 50%;
+  animation: animateCircle 2s linear infinite;
+}
+
+.ring span {
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  width: 50%;
+  height: 4px;
+  background: transparent;
+  transform-origin: left;
+  animation: animate 2s linear infinite;
+}
+
+.ring span:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsl(111, 92%, 46%);
+  top: -6px;
+  right: -8px;
+  box-shadow: 0 0 20px hsl(111, 92%, 46%);
+}
+
+@keyframes animate
+{
+    0%
+    {
+      transform: rotate(45deg);
+    }
+    100%
+    {
+      transform: rotate(405deg);
+    }
+}
+
+@keyframes animateCircle
+{
+    0%
+    {
+      transform: rotate(0deg);
+    }
+    100%
+    {
+      transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
